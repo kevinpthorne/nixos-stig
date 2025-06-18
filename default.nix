@@ -171,13 +171,11 @@
         in {
             login.text = pkgs.lib.mkDefault pamfile;
             sshd.text = pkgs.lib.mkDefault pamfile;
+            # V-268170: Enable pwquality
+            passwd.text = pkgs.lib.mkDefault (pkgs.lib.mkBefore "password requisite ${pkgs.libpwquality.lib}/lib/security/pam_pwquality.so");
+            chpasswd.text = pkgs.lib.mkDefault (pkgs.lib.mkBefore "password requisite ${pkgs.libpwquality.lib}/lib/security/pam_pwquality.so");
+            sudo.text = pkgs.lib.mkDefault (pkgs.lib.mkBefore "password requisite ${pkgs.libpwquality.lib}/lib/security/pam_pwquality.so");
         };
-
-
-        # V-268170: Enable pwquality
-        security.pam.services.passwd.text = pkgs.lib.mkDefault (pkgs.lib.mkBefore "password requisite ${pkgs.libpwquality.lib}/lib/security/pam_pwquality.so");
-        security.pam.services.chpasswd.text = pkgs.lib.mkDefault (pkgs.lib.mkBefore "password requisite ${pkgs.libpwquality.lib}/lib/security/pam_pwquality.so");
-        security.pam.services.sudo.text = pkgs.lib.mkDefault (pkgs.lib.mkBefore "password requisite ${pkgs.libpwquality.lib}/lib/security/pam_pwquality.so");
 
         # V-268126, V-268127, V-268128, V-268129, V-268134, V-268145, V-268169: Password complexity
         environment.etc."/security/pwquality.conf".text = ''
