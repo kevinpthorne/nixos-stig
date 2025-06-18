@@ -33,7 +33,7 @@ In your system's flake.nix, add this repository as an input:
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Add the STIG module flake here
-    nixos-stig.url = "github:kthorne/nixos-stig";
+    nixos-stig.url = "github:kevinpthorne/nixos-stig";
   };
 
   outputs = { self, nixpkgs, nixos-stig }: {
