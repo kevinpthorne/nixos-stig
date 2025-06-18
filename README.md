@@ -10,7 +10,7 @@ This module automates the setup of many STIG controls, including:
 - Secure SSH server configuration
 - Kernel hardening via sysctl parameters
 - Filesystem and user permission hardening
-- Disabling of unnecessary services (Bluetooth, wireless)
+- Disabling of vulnerable services (Bluetooth, wireless)
 - Enabling security features like AppArmor and USBGuard
 
 References
